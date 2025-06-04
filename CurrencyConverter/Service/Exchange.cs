@@ -2,12 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CurrencyConverter.Service
 {
     public class Exchange
     {
+        private readonly HttpClient _httpClient;
+        private readonly string _apiKey = "";
+        public Exchange()
+        {
+            _httpClient = new HttpClient();
+        }
+
+        public async Task<Root?> CurrencyConvert(string frmcity)
+        {
+
+            string url = $"https://v6.exchangerate-api.com/v6/{_apiKey}/latest/{frmcity}";
+
+            try
+            {
+
+                var response = await _httpClient.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var result = JsonSerializer.Deserialize<Root>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+
+
+                    );
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine($"Failed: {response.StatusCode}");
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                return null;
+
+            }
+
+
+        }
+
+
+
     }
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);

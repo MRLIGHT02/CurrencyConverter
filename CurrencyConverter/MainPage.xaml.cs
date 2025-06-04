@@ -1,12 +1,17 @@
-﻿namespace CurrencyConverter
+﻿using CurrencyConverter.Service;
+
+namespace CurrencyConverter
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly Exchange _exchange;
 
-        public MainPage()
+        public MainPage(Exchange exchange)
         {
             InitializeComponent();
+            _exchange = exchange;
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CurrencyConverter.Service;
+using Microsoft.Extensions.Logging;
 
 namespace CurrencyConverter
 {
@@ -15,8 +16,9 @@ namespace CurrencyConverter
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<Exchange>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
