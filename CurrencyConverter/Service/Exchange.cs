@@ -10,16 +10,16 @@ namespace CurrencyConverter.Service
     public class Exchange
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "";
+        private readonly string _apiKey = "586379d689546589e565fa8e";
         public Exchange()
         {
             _httpClient = new HttpClient();
         }
 
-        public async Task<Root?> CurrencyConvert(string frmcity)
+        public async Task<Root?> CurrencyConvert(string fromTo, string whereTo)
         {
 
-            string url = $"https://v6.exchangerate-api.com/v6/{_apiKey}/latest/{frmcity}";
+            string url = $"https://v6.exchangerate-api.com/v6/{_apiKey}/pair/{fromTo}/{whereTo}";
 
             try
             {
@@ -57,6 +57,8 @@ namespace CurrencyConverter.Service
     }
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+
     public class ConversionRates
     {
         public int USD { get; set; }
@@ -223,7 +225,6 @@ namespace CurrencyConverter.Service
         public double ZMW { get; set; }
         public double ZWL { get; set; }
     }
-
     public class Root
     {
         public string result { get; set; }
@@ -234,8 +235,10 @@ namespace CurrencyConverter.Service
         public int time_next_update_unix { get; set; }
         public string time_next_update_utc { get; set; }
         public string base_code { get; set; }
-        public ConversionRates conversion_rates { get; set; }
+        public string target_code { get; set; }
+        public double conversion_rate { get; set; }
     }
+
 
 
 }

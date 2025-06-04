@@ -22,28 +22,17 @@
                 <Picker
                     x:Name="fromCurrencyPicker"
                     Title="From Currency"
-                    WidthRequest="150">
-                    <Picker.Items>
-                        <x:String>Usd</x:String>
-                        <x:String>Inr</x:String>
-                        <x:String>Eur</x:String>
-                    </Picker.Items>
-                </Picker>
+                    WidthRequest="150" />
                 <Picker
                     x:Name="toCurrencyPicker"
                     Title="To Currency"
-                    WidthRequest="150">
-                    <Picker.Items>
-                        <x:String>Usd</x:String>
-                        <x:String>Inr</x:String>
-                        <x:String>Eur</x:String>
-                    </Picker.Items>
-
-                </Picker>
+                    WidthRequest="150" />
             </HorizontalStackLayout>
 
             <Button
+                x:Name="btnConvert"
                 BackgroundColor="#0077CC"
+                Clicked="btnConvert_Clicked"
                 CornerRadius="10"
                 Text="Convert"
                 TextColor="White" />
@@ -55,7 +44,7 @@
                 FontAttributes="Bold"
                 FontSize="18"
                 HorizontalOptions="Center"
-                Text="result"
+                Text=""
                 TextColor="Green" />
 
         </VerticalStackLayout>
