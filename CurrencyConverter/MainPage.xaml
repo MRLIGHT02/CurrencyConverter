@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CurrencyConverter.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="Currency Converter" />
+
+            <Entry
+                x:Name="amountEntry"
+                Keyboard="Numeric"
+                Placeholder="Enter amount" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Picker
+                    x:Name="fromCurrencyPicker"
+                    Title="From Currency"
+                    WidthRequest="150">
+                    <Picker.Items>
+                        <x:String>Usd</x:String>
+                        <x:String>Inr</x:String>
+                        <x:String>Eur</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker
+                    x:Name="toCurrencyPicker"
+                    Title="To Currency"
+                    WidthRequest="150">
+                    <Picker.Items>
+                        <x:String>Usd</x:String>
+                        <x:String>Inr</x:String>
+                        <x:String>Eur</x:String>
+                    </Picker.Items>
+
+                </Picker>
+            </HorizontalStackLayout>
+
+            <Button
+                BackgroundColor="#0077CC"
+                CornerRadius="10"
+                Text="Convert"
+                TextColor="White" />
+
+            <Label
+                x:Name="resultLabel"
+                Margin="10,0,0,0"
+                Padding="10"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="result"
+                TextColor="Green" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
